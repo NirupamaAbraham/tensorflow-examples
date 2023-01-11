@@ -55,6 +55,7 @@ def define_flags():
                     'Mode of the launcher, default value is: train_and_eval')
   flags.DEFINE_float('gradient_clip_norm', 1.0,
                      'gradient_clip_norm <= 0 meaning no clip.')
+  flags.DEFINE_integer('max_history_length', 10, 'Max length of user history.')
   flags.DEFINE_string('vocab_dir', None,
                       'Path of the directory storing vocabulary files.')
   flags.DEFINE_string('input_config_file', None,
