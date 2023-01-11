@@ -40,6 +40,10 @@ def define_flags():
                       'File pattern of the training data.')
   flags.DEFINE_string('model_dir', None, 'Directory to store checkpoints.')
   flags.DEFINE_string('export_dir', None, 'Directory for the exported model.')
+  flags.DEFINE_string(
+      'params_path', None,
+      'Path to the json file containing params needed to run '
+      'p13n recommendation model.')
   flags.DEFINE_integer('batch_size', 1, 'Training batch size.')
   flags.DEFINE_float('learning_rate', 0.1, 'Learning rate.')
   flags.DEFINE_integer('steps_per_epoch', 10,
@@ -71,6 +75,9 @@ def define_flags():
       'this flag is only required if LSTM encoder type is used.')
   flags.DEFINE_integer('num_predictions', 5,
                        'Num of top predictions to output.')
+  flags.DEFINE_string(
+      'encoder_type', 'bow', 'Type of the encoder for context'
+      'encoding, the value could be ["bow", "rnn", "cnn"].')
   flags.DEFINE_string('checkpoint_path', '', 'Path to the checkpoint.')
 
 
