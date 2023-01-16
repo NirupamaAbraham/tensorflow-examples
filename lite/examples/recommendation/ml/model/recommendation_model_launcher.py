@@ -58,10 +58,10 @@ def define_flags():
   flags.DEFINE_integer('max_history_length', 10, 'Max length of user history.')
   flags.DEFINE_string('vocab_dir', None,
                       'Path of the directory storing vocabulary files.')
-  flags.DEFINE_list('hidden_layer_dims', None, 'Hidden layer dimensions.')
-  flags.DEFINE_list('eval_top_k', None, 'Top k to evaluate.')
+  flags.DEFINE_list('hidden_layer_dims', [8, 4], 'Hidden layer dimensions.')
+  flags.DEFINE_list('eval_top_k', [1, 5], 'Top k to evaluate.')
   flags.DEFINE_list(
-      'conv_num_filter_ratios', None,
+      'conv_num_filter_ratios', [2, 4],
       'Number of filter ratios for the Conv1D layer, this'
       'flag is only required if CNN encoder type is used.')
   flags.DEFINE_integer(
