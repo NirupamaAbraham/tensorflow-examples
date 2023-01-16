@@ -39,7 +39,7 @@ def define_flags():
   flags.DEFINE_string('testing_data_filepattern', None,
                       'File pattern of the training data.')
   flags.DEFINE_string('model_dir', None, 'Directory to store checkpoints.')
-  flags.DEFINE_string('export_dir', None, 'Directory for the exported model.')
+  flags.DEFINE_string('export_dir', "", 'Directory for the exported model.')
   flags.DEFINE_string(
       'params_path', None,
       'Path to the json file containing params needed to run '
@@ -267,9 +267,6 @@ def prepare_model_config():
 def main(_):
   logger = tf.get_logger()
   
-  logger.info('model_dir:', FLAGS.model_dir)
-  logger.info('export_dir:', FLAGS.export_dir)
-  
   if not tf.io.gfile.exists(FLAGS.model_dir):
     tf.io.gfile.mkdir(FLAGS.model_dir)
 
@@ -310,7 +307,7 @@ def main(_):
           checkpoint_path=latest_checkpoint_path,
           input_config=input_config,
           model_config=model_config,
-          export_dir=os.path.join(FLAGS.model_dir, 'export'))
+          export_dir=FLAGS.export_dir)
   elif FLAGS.run_mode == 'export':
     checkpoint_path = (
         FLAGS.checkpoint_path if FLAGS.checkpoint_path else
@@ -319,7 +316,7 @@ def main(_):
         checkpoint_path=checkpoint_path,
         input_config=input_config,
         model_config=model_config,
-        export_dir=os.path.join(FLAGS.model_dir, 'export'))
+        export_dir=FLAGS.export_dir)
   else:
     logger.error('Unsupported launcher run model {}.'.format(FLAGS.run_mode))
 
