@@ -266,6 +266,10 @@ def prepare_model_config():
 
 def main(_):
   logger = tf.get_logger()
+  
+  tf.print("model_dir:", FLAGS.model_dir)
+  tf.print("export_dir:", FLAGS.export_dir)
+  
   if not tf.io.gfile.exists(FLAGS.model_dir):
     tf.io.gfile.mkdir(FLAGS.model_dir)
 
