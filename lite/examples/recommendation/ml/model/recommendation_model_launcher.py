@@ -78,8 +78,7 @@ def define_flags():
       'encoding, the value could be ["bow", "rnn", "cnn"].')
   flags.DEFINE_string('checkpoint_path', '', 'Path to the checkpoint.')
 
-  currentDir = os.getcwd() 
-  parentDir = os.path.dirname(currentDir)
+  parentDir = os.getcwd()
   flags.DEFINE_string('input_config_file', os.path.join(parentDir, 'configs/input-config'),
                       'Path to the input config pbtxt'
                       'file.')
