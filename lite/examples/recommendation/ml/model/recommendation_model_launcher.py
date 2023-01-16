@@ -298,7 +298,7 @@ def main(_):
           checkpoint_path=latest_checkpoint_path,
           input_config=input_config,
           model_config=model_config,
-          export_dir=FLAGS.export_dir)
+          export_dir=os.path.join(FLAGS.model_dir, 'export'))
   elif FLAGS.run_mode == 'export':
     checkpoint_path = (
         FLAGS.checkpoint_path if FLAGS.checkpoint_path else
@@ -307,7 +307,7 @@ def main(_):
         checkpoint_path=checkpoint_path,
         input_config=input_config,
         model_config=model_config,
-        export_dir=FLAGS.export_dir)
+        export_dir=os.path.join(FLAGS.model_dir, 'export'))
   else:
     logger.error('Unsupported launcher run model {}.'.format(FLAGS.run_mode))
 
