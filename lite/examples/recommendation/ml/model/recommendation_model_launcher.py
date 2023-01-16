@@ -79,7 +79,7 @@ def define_flags():
   flags.DEFINE_string('checkpoint_path', '', 'Path to the checkpoint.')
 
   parentDir = os.getcwd()
-  flags.DEFINE_string('input_config_file', os.path.join(parentDir, 'configs/input-config'),
+  flags.DEFINE_string('input_config_file', os.path.join(parentDir, 'configs/sample_input_config.pbtxt'),
                       'Path to the input config pbtxt'
                       'file.')
 
