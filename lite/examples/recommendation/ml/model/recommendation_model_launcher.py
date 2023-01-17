@@ -39,7 +39,7 @@ def define_flags():
   flags.DEFINE_string('testing_data_filepattern', None,
                       'File pattern of the training data.')
   flags.DEFINE_string('model_dir', None, 'Directory to store checkpoints.')
-  flags.DEFINE_string('export_dir', "export_dir", 'Directory for the exported model.')
+  flags.DEFINE_string('export_dir', None, 'Directory for the exported model.')
   flags.DEFINE_string(
       'params_path', None,
       'Path to the json file containing params needed to run '
@@ -58,10 +58,13 @@ def define_flags():
   flags.DEFINE_integer('max_history_length', 10, 'Max length of user history.')
   flags.DEFINE_string('vocab_dir', None,
                       'Path of the directory storing vocabulary files.')
-  flags.DEFINE_list('hidden_layer_dims', [8, 4], 'Hidden layer dimensions.')
-  flags.DEFINE_list('eval_top_k', [1, 5], 'Top k to evaluate.')
+  flags.DEFINE_string('input_config_file', None,
+                      'Path to the input config pbtxt'
+                      'file.')
+  flags.DEFINE_list('hidden_layer_dims', None, 'Hidden layer dimensions.')
+  flags.DEFINE_list('eval_top_k', None, 'Top k to evaluate.')
   flags.DEFINE_list(
-      'conv_num_filter_ratios', [2, 4],
+      'conv_num_filter_ratios', None,
       'Number of filter ratios for the Conv1D layer, this'
       'flag is only required if CNN encoder type is used.')
   flags.DEFINE_integer(
@@ -77,11 +80,6 @@ def define_flags():
       'encoder_type', 'bow', 'Type of the encoder for context'
       'encoding, the value could be ["bow", "rnn", "cnn"].')
   flags.DEFINE_string('checkpoint_path', '', 'Path to the checkpoint.')
-
-  parentDir = os.getcwd()
-  flags.DEFINE_string('input_config_file', os.path.join(parentDir, 'configs/input-config.proto'),
-                      'Path to the input config pbtxt'
-                      'file.')
 
 class SimpleCheckpoint(tf.keras.callbacks.Callback):
   """Keras callback to save tf.train.Checkpoints."""
