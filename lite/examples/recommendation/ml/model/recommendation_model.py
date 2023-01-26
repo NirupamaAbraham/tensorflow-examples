@@ -60,6 +60,8 @@ class RecommendationModel(tf.keras.Model):
     Returns:
       Dotproduct similarity for training mode.
     """
+    print('Inputs')
+    print(inputs)
     context_embeddings = self._context_encoder(inputs)
     # Compute the similarities between the context embedding and embeddings of
     # all items in the vocabulary.
